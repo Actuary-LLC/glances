@@ -12,5 +12,7 @@ services:
       - "61208:61208" # Glances web interface
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - "GLANCES_OPT=-w"
 #    environment:
 #      GLANCES_OPT: "--disable-webui --quiet"
