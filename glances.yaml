@@ -8,14 +8,14 @@ services:
       - "61208:61208" # Glances web interface
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    pid: host
+    network_mode: host
     tmpfs:
       - /app
     environment:
       - "GLANCES_OPT=-w"
-    network_mode: host
-    deploy:
-      placement:
-        constraints:
-          - node.labels.hardware == coral
-#    environment:
-#      GLANCES_OPT: "--disable-webui --quiet"
+    #Currently docker swarm mode on a specific node does not have appropriate permissions; using docker-compose for now
+    #deploy:
+    #  placement:
+    #    constraints:
+    #      - node.labels.hardware == coral
