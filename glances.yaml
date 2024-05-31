@@ -21,8 +21,5 @@ services:
       placement:
         constraints:
           - node.labels.hardware == coral
-      mode: replicated
-        replicas: 1
-
 #    environment:
 #      GLANCES_OPT: "--disable-webui --quiet"
