@@ -14,5 +14,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - "GLANCES_OPT=-w"
+    tmpfs:
+      - /app
+      - /tmp
+      - /var/log
 #    environment:
 #      GLANCES_OPT: "--disable-webui --quiet"
