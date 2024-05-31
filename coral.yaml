@@ -1,6 +1,3 @@
-version: '3.9'
-
-
 services:
   coral:
     image: nicolargo/glances:4.0.7-full
