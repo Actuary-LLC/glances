@@ -4,17 +4,25 @@ version: '3.9'
 services:
   coral:
     image: nicolargo/glances:4.0.7-full
-    deploy:
-      placement:
-        constraints:
-          - node.labels.hardware == coral
+    command: glances -C /host/proc -s
     ports:
       - "61208:61208" # Glances web interface
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - "GLANCES_OPT=-w"
     tmpfs:
       - /
+    environment:
+      - "GLANCES_OPT=-w"
+    network_mode: host
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    deploy:
+      placement:
+        constraints:
+          - node.labels.hardware == coral
+      mode: replicated
+        replicas: 1
+
 #    environment:
 #      GLANCES_OPT: "--disable-webui --quiet"
