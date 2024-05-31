@@ -10,7 +10,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     tmpfs:
-      - /
+      - /app
     environment:
       - "GLANCES_OPT=-w"
     network_mode: host
