@@ -4,7 +4,6 @@ version: '3.9'
 services:
   coral:
     image: nicolargo/glances:4.0.7-full
-    command: glances -C /host/proc -s
     ports:
       - "61208:61208" # Glances web interface
     volumes:
@@ -14,9 +13,6 @@ services:
     environment:
       - "GLANCES_OPT=-w"
     network_mode: host
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
     deploy:
       placement:
         constraints:
