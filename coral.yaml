@@ -4,8 +4,6 @@ version: '3.9'
 services:
   coral:
     image: nicolargo/glances:4.0.7-full
-    ports:
-      - "61208:61208" # Glances web interface
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     pid: host
@@ -19,3 +17,5 @@ services:
     #  placement:
     #    constraints:
     #      - node.labels.hardware == coral
+    #ports:
+    #  - "61208:61208" # Glances web interface
