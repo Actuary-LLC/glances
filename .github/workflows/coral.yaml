@@ -15,4 +15,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Run a container command
         run: |
-          docker-compose -f coral.yaml up -d
+          docker run -d --restart="always" -p 61208-61209:61208-61209 -e GLANCES_OPT="-w" -v /var/run/docker.sock:/var/run/docker.sock:ro --pid host docker.io/nicolargo/glances
+
+#docker-compose -f coral.yaml up -d
